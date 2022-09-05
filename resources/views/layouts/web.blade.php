@@ -36,7 +36,7 @@
                         <ul class="header__list">
                             <li>
                                 <a href="{{ route('index') }}"
-                                    class="header__link 	@if (request()->is('/') || request()->is('/*') || request()->is('*/*') || request()->is('*/')) active header__contact @endif">
+                                    class="header__link 	@if (request()->is('/') || request()->is(app()->getLocale())) active header__contact @endif">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     Main
                                     {{-- </p> --}}
@@ -107,6 +107,7 @@
                             <li>
 
                                 <div class="header__lang header__lang--mobile">
+                                    @foreach($langs as $lang)   
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -114,10 +115,15 @@
                                             stroke="white" stroke-width="1.5" stroke-miterlimit="10"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
-                                    <a href="{{ route('setlocale', ['lang' => 'en']) }}"
-                                        class="header__lang-item header__lang-item--active">En</a>
-                                    <a href="{{ route('setlocale', ['lang' => 'ru']) }}"
-                                        class="header__lang-item">Ru</a>
+                                    
+
+                                        <a href="{{ route('setlocale', ['lang' => $lang->small]) }}"
+                                            class="header__lang-item  @if((App::getLocale() == $lang->small)) active    @endif  "
+                                            onclick="activeFun">{{ $lang->small }}</a>
+                                      
+                                        @endforeach
+
+                                       
                                 </div>
 
                                 <div class="header__lang ">
@@ -132,14 +138,12 @@
                                     
 
                                         <a href="{{ route('setlocale', ['lang' => $lang->small]) }}"
-                                            class="header__lang-item header__lang-item @if((\App::getLocale() == $lang)) activ   @endif  "
+                                            class="header__lang-item  @if((App::getLocale() == $lang->small)) active    @endif  "
                                             onclick="activeFun">{{ $lang->small }}</a>
+                                      
                                         @endforeach
 
-                                        @dd((\App::getLocale() == $lang))
-                                    {{-- <a href="{{ route('setlocale', ['lang' => 'ru']) }}"
-                                        class="header__lang-item @if (request()->is('/') || request()->is('/*') || request()->is('*/*') )  active @endif"
-                                        onclick="activeFun">Ru</a> --}}
+                                   
                                 </div>
 
                             </li>           
