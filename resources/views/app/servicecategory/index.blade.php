@@ -44,9 +44,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- <div class="mt-4">
-                    {!! $servicecategory->links() !!}
-                </div> --}}
+                <div class="mt-4">
+                    {!! $servicecategories->links() !!}
+                </div>
             </div>
         </div>
     </div>

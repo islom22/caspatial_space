@@ -60,9 +60,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- <div class="mt-4">
-                    {!! $new->links() !!}
-                </div> --}}
+                <div class="mt-4">
+                    {!! $news->links() !!}
+                </div>
             </div>
         </div>
     </div>

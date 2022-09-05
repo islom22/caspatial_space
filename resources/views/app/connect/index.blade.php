@@ -53,7 +53,7 @@
                     </tbody>
                 </table>
                 <div class="mt-4">
-                    {{-- {!! $applications->links() !!} --}}
+                    {!! $applications->links() !!}
                 </div>
             </div>
         </div>

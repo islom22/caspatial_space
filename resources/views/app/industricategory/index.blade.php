@@ -56,9 +56,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- <div class="mt-4">
-                    {!! $industricategory->links() !!}
-                </div> --}}
+                <div class="mt-4">
+                    {!! $industricategories->links() !!}
+                </div>
             </div>
         </div>
     </div>

@@ -59,9 +59,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{-- <div class="mt-4">
-                    {!! $banner->links() !!}
-                </div> --}}
+                <div class="mt-4">
+                    {!! $banners->links() !!}
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +7,8 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" href="{{ asset('images/shortcut.svg') }}">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Sweet Alert -->
     <link type="text/css" href="{{ asset('app/sweetalert2.min.css') }}" rel="stylesheet">
@@ -102,7 +101,7 @@
                 <li
                     class="nav-item {{ Route::currentRouteName() == 'banners.index' ? 'active' : '' }} @if (request()->is('admin/banners') || request()->is('admin/banners/*')) active @endif">
                     <a href="{{ route('banners.index') }}" class="nav-link">
-                         <span class="sidebar-icon">
+                        <span class="sidebar-icon">
                             {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 fill="currentColor" class="bi bi-collection me-2" viewBox="0 0 16 16">
                                 <path
@@ -110,7 +109,7 @@
                             </svg>
                             <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16" fill="#9CA3AF" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 53.46L300.1 7.261C307 1.034 315.1-1.431 324.4 .8185C332.8 3.068 339.3 9.679 341.4 18.1L357.3 80.6L419.3 63.07C427.7 60.71 436.7 63.05 442.8 69.19C448.1 75.34 451.3 84.33 448.9 92.69L431.4 154.7L493.9 170.6C502.3 172.7 508.9 179.2 511.2 187.6C513.4 196 510.1 204.1 504.7 211L458.5 256L504.7 300.1C510.1 307 513.4 315.1 511.2 324.4C508.9 332.8 502.3 339.3 493.9 341.4L431.4 357.3L448.9 419.3C451.3 427.7 448.1 436.7 442.8 442.8C436.7 448.1 427.7 451.3 419.3 448.9L357.3 431.4L341.4 493.9C339.3 502.3 332.8 508.9 324.4 511.2C315.1 513.4 307 510.1 300.1 504.7L256 458.5L211 504.7C204.1 510.1 196 513.4 187.6 511.2C179.2 508.9 172.7 502.3 170.6 493.9L154.7 431.4L92.69 448.9C84.33 451.3 75.34 448.1 69.19 442.8C63.05 436.7 60.71 427.7 63.07 419.3L80.6 357.3L18.1 341.4C9.679 339.3 3.068 332.8 .8186 324.4C-1.431 315.1 1.034 307 7.261 300.1L53.46 256L7.261 211C1.034 204.1-1.431 196 .8186 187.6C3.068 179.2 9.679 172.7 18.1 170.6L80.6 154.7L63.07 92.69C60.71 84.33 63.05 75.34 69.19 69.19C75.34 63.05 84.33 60.71 92.69 63.07L154.7 80.6L170.6 18.1C172.7 9.679 179.2 3.068 187.6 .8185C196-1.431 204.1 1.034 211 7.261L256 53.46z"/></svg> --}}
                             <i class="fas fa-th-large fa-fw me-2"></i>
-                        </span> 
+                        </span>
                         <span class="sidebar-text">Banner</span>
                     </a>
                 </li>
@@ -212,13 +211,13 @@
                     </div>
                 </li>
 
-                
+
 
                 <li class="nav-item {{ Route::currentRouteName() == 'services.index' ? 'active' : '' }}">
                     <span class="nav-link d-flex justify-content-between align-items-center collapsed"
-                        data-bs-toggle="collapse" data-bs-target="#submenu-add" aria-expanded="false">
+                        data-bs-toggle="collapse"  data-bs-target="#submenu-add" aria-expanded="false" aria-controls="posts">
                         <span>
-                        
+
                             <span class="sidebar-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
                                     fill="#9CA3AF" viewBox="0 0 448 512">
@@ -237,7 +236,8 @@
                             </svg>
                         </span>
                     </span>
-                    <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
+                    <div class=" collapse show " id="posts">
+                        <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
                         style="">
                         <ul class="flex-column nav">
                             <li class="nav-item ">
@@ -245,9 +245,14 @@
                                     <span class="sidebar-text">Service</span>
                                 </a>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('servicecategories.index') }}">
+                                    <span class="sidebar-text">Categories</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                    <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
+                    {{-- <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
                         style="">
                         <ul class="flex-column nav">
                             <li class="nav-item ">
@@ -256,12 +261,13 @@
                                 </a>
                             </li>
                         </ul>
+                    </div> --}}
                     </div>
                 </li>
 
-             
 
-                
+
+
 
                 <li
                     class="nav-item {{ Route::currentRouteName() == 'abouts.index' ? 'active' : '' }} @if (request()->is('admin/abouts') || request()->is('admin/abouts/*')) active @endif">
@@ -310,22 +316,30 @@
                 </li>
 
                 <li class="nav-item {{ Route::currentRouteName() == 'langs.index' ? 'active' : '' }}">
-                    <span class="nav-link d-flex justify-content-between align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#submenu-app" aria-expanded="false">
+                    <span class="nav-link d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-app" aria-expanded="false">
                         <span>
                             <span class="sidebar-icon">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clip-rule="evenodd"></path>
                                 </svg>
                             </span>
                             <span class="sidebar-text">Settings</span>
                         </span>
                         <span class="link-arrow">
-                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                         </span>
                     </span>
-                    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="">
+                    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false"
+                        style="">
                         <ul class="flex-column nav">
                             <li class="nav-item ">
                                 <a class="nav-link" href="{{ route('langs.index') }}">
@@ -336,7 +350,7 @@
                     </div>
                 </li>
 
-                
+
             </ul>
         </div>
     </nav>
@@ -457,3 +471,27 @@
 </style>
 
 </html>
+
+
+
+
+<li class="nav-item">
+    <a class="nav-link" href="#posts" data-bs-toggle="collapse" role="button" aria-expanded="false"
+        aria-controls="posts">
+        <i class="fe fe-cast"></i> Посты
+    </a>
+    <div class="collapse show" id="posts">
+        <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="https://orzuoshtuzi.ndc.uz/admin/posts">
+                    Посты
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="https://orzuoshtuzi.ndc.uz/admin/posts_categories">
+                    Категории постов
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
