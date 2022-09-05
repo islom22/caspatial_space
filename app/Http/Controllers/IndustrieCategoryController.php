@@ -41,7 +41,7 @@ class IndustrieCategoryController extends Controller
     {
         // @dd($request->all());
         $request->validate([
-            'title.ru' => 'required|min:1|max:255',
+            'title.en' => 'required|min:1|max:255',
             'icon' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:2048'
         ]);
         // dd($request->title);
@@ -146,7 +146,7 @@ class IndustrieCategoryController extends Controller
     {
         $request->validate([
             // 'icon' => 'required|min:1|max:255',
-            'title.ru' => 'required|min:1|max:255'
+            'title.en' => 'required|min:1|max:255'
         ]);
 
         $industricategory = IndustrieCategory::find($id);

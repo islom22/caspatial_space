@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="mb-2">
                                     <label for="">Date</label>
-                                    <input type="date" class="form-control" name="date" placeholder="date"
+                                    <input id="txtDate" type="date" class="form-control" name="date" placeholder="date"
                                         value="{{ old('date', $new->date) }}">
                                 </div>
                                 <button class="btn btn-success px-5 text-white" type="submit"

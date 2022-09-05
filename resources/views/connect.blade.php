@@ -1,4 +1,5 @@
 @extends('layouts.web')
+@section('title', 'CAST interenational FZCO')
 
 @section('content')
     <main class="contacts-page">
@@ -101,7 +102,7 @@
                             @csrf
                             <input type="text" class="ir-regular" name="name" required value="{{ old('name') }}"
                                 placeholder="First Name Last Name">
-                            <input type="text" class="mask ir-regular" name="phone" required value="{{ old('phone') }}"
+                            <input type="text" class=" ir-regular" name="phone" required value="{{ old('phone') }}"
                                 placeholder="Phone number">
                             <input type="email" class="ir-regular" name="email" value="{{ old('email') }}"
                                 placeholder="Mail">

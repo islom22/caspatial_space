@@ -1,5 +1,7 @@
 @extends('layouts.web')
 
+@section('title', 'CAST interenational FZCO')
+
 @section('content')
     <main class="main-page">
         @if (isset($banners[0]))
@@ -16,17 +18,17 @@
                                             <div class="d-flex" style="display: flex;">
                                                 @if (isset($banners[0]->title))
                                                     <h2 class="main__slider-title ir-bold">
-                                                        {{ $banners[0]->title['ru'] }}
+                                                        {{ isset($banners[0]->title[$lang]) ? $banners[0]->title[$lang] : $banners[0]->title['en'] }}
                                                     </h2>
                                                 @endif
-                                                <a href="{{ route('index') }}">
+                                                <a href="{{ $banners[0]->link }}">
                                                     <img src="{{ asset('images/arrow-right.svg') }}" alt="">
                                                 </a>
                                             </div>
                                             @if (isset($banners[0]->desc))
                                                 <div class="main__slider-subtitle">
                                                     <p class="main__slider-subtitle">
-                                                        {!! $banners[0]->desc['ru'] !!}
+                                                        {!! isset($banners[0]->desc[$lang]) ? $banners[0]->desc[$lang] : $banners[0]->desc['en']  !!}
                                                     </p>
                                                 </div>
                                             @endif
@@ -45,17 +47,17 @@
                                             <div class="d-flex" style="display: flex;">
                                                 @if (isset($banners[1]->title))
                                                     <h2 class="main__slider-title ir-bold">
-                                                        {{ $banners[1]->title['ru'] }}
+                                                        {{ isset($banners[1]->title[$lang]) ? $banners[1]->title[$lang] : $banners[1]->title['en']  }}
                                                     </h2>
                                                 @endif
-                                                <a href="{{ route('index') }}">
+                                                <a href="{{ $banners[1]->link   }}">
                                                     <img src="{{ asset('images/arrow-right.svg') }}" alt="">
                                                 </a>
                                             </div>
                                             @if (isset($banners[1]->desc))
                                                 <div class="main__slider-subtitle">
                                                     <p class="main__slider-subtitle">
-                                                        {!! $banners[1]->desc['ru'] !!}
+                                                        {!! isset($banners[1]->desc[$lang]) ? $banners[1]->desc[$lang] : $banners[1]->desc['en']  !!}
                                                     </p>
                                                 </div>
                                             @endif
@@ -91,13 +93,13 @@
                                             <div class="services__slide-item"
                                                 style="background-image: url({{ asset($item['service_image'][0]['img']) }});">
                                                 @if (isset($item['title']))
-                                                    <h4 class="services__slide-title ir-bold"> {{ $item['title']['ru'] }}
-                                                    </h4>
+                                                    <h4 class="services__slide-title ir-bold"> {{ isset($item['title'][$lang]) ? $item['title'][$lang] : $item['title']['en'] }}
+                                                    </h4> 
                                                 @endif
                                                 <div class="services__slide-inner">
                                                     @if (isset($item['subtitle']))
                                                         <p class="services__slide-text">
-                                                            {{ $item['subtitle']['ru'] }}
+                                                            {{  isset($item['subtitle'][$lang]) ? $item['subtitle'][$lang] : $item['subtitle']['en'] }}
                                                         </p>
                                                     @endif
                                                     <a href="{{ route('services-show', ['id' => $item['id']]) }}"
@@ -111,13 +113,13 @@
                                             <div class="services__slide-item"
                                                 style="background-image: url({{ asset('upload/service/default-image-720x530.jpg') }});">
                                                 @if (isset($item['title']))
-                                                    <h4 class="services__slide-title ir-bold"> {{ $item['title']['ru'] }}
+                                                    <h4 class="services__slide-title ir-bold">  {{ isset($item['title'][$lang]) ? $item['title'][$lang] : $item['title']['en']  }} 
                                                     </h4>
                                                 @endif
                                                 <div class="services__slide-inner">
                                                     @if (isset($item['subtitle']))
                                                         <p class="services__slide-text">
-                                                            {{ $item['subtitle']['ru'] }}
+                                                             {{  isset($item['subtitle'][$lang]) ? $item['subtitle'][$lang] : $item['subtitle']['en'] }} 
                                                         </p>
                                                     @endif
                                                     <a href="{{ route('services-show', ['id' => $item['id']]) }}"
@@ -143,40 +145,33 @@
                 <div class="development__top">
                     <div class="title development__title">
                         <h3 class="ir-bold">
-                            Development of geoinformation systems</h3>
+                             {{ translation('olma') }}</h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, maxime architecto. Magnam
-                            nulla laudantium sed?</p>
+                            {{ translation('apple') }}
+                        </p>
                     </div>
                 </div>
                 <div class="development__body">
                     <div class="development__info">
-                        <p class="development__text">The CAST interenational FZCO company, a leading integrator in the
-                            field of geoinformation technologies and aerospace monitoring, was founded in 2022.</p>
+                        <p class="development__text">{{ translation('hi') }}</p>
                         <p class="development__text">
-                            The mission of the company is to provide society with objective information about the state of
-                            the surrounding world.</p>
-                        <p class="development__text">The strategic goal of the company: the widespread introduction of
-                            geoinformation technologies in the life of society, business and government to improve the
-                            efficiency of management decisions.</p>
-                        <p class="development__text">The main area of ​​interest of the company: the latest information
-                            technology. The CAST interenational FZCO company offers innovative approaches, working on
-                            further improvement and development of technologies based on integrated server geoinformation
-                            solutions and cloud computing.</p>
+                            {{ translation('one') }}</p>
+                        <p class="development__text">{{ translation('two') }}</p>
+                        <p class="development__text">{{ translation('three') }}.</p>
                     </div>
-                    <a href="index.html" class="development__logo">
-                        <img src="images/logo.png" alt="">
+                    <a href="{{ route('index') }}" class="development__logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="">
                     </a>
                 </div>
                 <div class="development__bottom">
                     <ul class="development__list">
-                        <li>Space photography</li>
-                        <li>Stereo Monitors</li>
-                        <li>Planet Monitoring</li>
-                        <li>Space photography</li>
+                        <li>{{ translation('first') }}</li>
+                        <li>{{ translation('second') }}</li>
+                        <li>{{ translation('third') }}</li>
+                        <li>{{ translation('four') }}</li>
                     </ul>
                     <a href="#" class="development__link">
-                        <img src="images/arrow-right.svg" alt="">
+                        <img src="{{ asset('images/arrow-right.svg') }}" alt="">
                     </a>
                 </div>
             </div>
@@ -198,10 +193,10 @@
                                 @endif
                                 <div class="industries__item-info">
                                     @if (isset($industry->title))
-                                        <h6 class="ir-bold">{{ $industry->title['ru'] }}</h6>
+                                        <h6 class="ir-bold">{{ isset($industry->title[$lang]) ? $industry->title[$lang] : $industry->title['en']  }}</h6>
                                     @endif
                                     @if (isset($industry->subtitle))
-                                        <p>{!! $industry->subtitle['ru'] !!}</p>
+                                        <p>{!! isset($industry->subtitle[$lang]) ? $industry->subtitle[$lang] : $industry->subtitle['en'] !!}</p>
                                     @endif
                                 </div>
                             </div>
@@ -216,44 +211,38 @@
                 <div class="about__inner">
                     <div class="about__info">
                         <div class="title about__title">
-                            <h3 class="ir-bold">"Geoanalytics" - cloud intelligent geoinformation platform</h3>
+                            <h3 class="ir-bold">{{ translation('birinchi') }}</h3>
                         </div>
-                        <p class="about__text">We combine a wide range of services, including the provision of space and
-                            unmanned aerial imagery data, geospatial software, special technical tools and online services,
-                            to effectively help customers develop high-tech competitive solutions.</p>
-                        <p class="about__text">CAST interenational FZCO LLC is an authorized partner of major world
-                            software developers, remote sensing satellite operators and design companies.</p>
+                        <p class="about__text">{{ translation('ikkinchi') }}</p>
+                        <p class="about__text">{{ translation('uchinchi') }}</p>
                         <ul class="about__list">
                             <li>
                                 <div class="about__list-icon">
-                                    <img src="images/chevron-left.svg" alt="">
+                                    <img src="{{ asset('images/chevron-left.svg') }}" alt="">
                                 </div>
                                 <p>
-                                    We combine a wide range of services, including the provision of space and unmanned
-                                    aerial imagery data</p>
+                                    {{ translation('to`rtinchi') }}</p>
                             </li>
                             <li>
                                 <div class="about__list-icon">
-                                    <img src="images/chevron-left.svg" alt="">
+                                    <img src="{{ asset('images/chevron-left.svg') }}" alt="">
                                 </div>
                                 <p>
-                                    Geospatial software, special hardware and online services</p>
+                                    {{ translation('beshinchi') }}</p>
                             </li>
                             <li>
                                 <div class="about__list-icon">
-                                    <img src="images/chevron-left.svg" alt="">
+                                    <img src="{{ asset('images/chevron-left.svg') }}" alt="">
                                 </div>
                                 <p>
-                                    To provide customers with effective assistance in the development of high-tech
-                                    competitive solutions.</p>
+                                    {{ translation('oltinchi') }}</p>
                             </li>
                             <li>
                                 <div class="about__list-icon">
-                                    <img src="images/chevron-left.svg" alt="">
+                                    <img src="{{ asset('images/chevron-left.svg') }}" alt="">
                                 </div>
                                 <p>
-                                    CAST interenational FZCO LLC is an authorized partner of major world software
-                                    developers, remote sensing satellite operators and design companies.</p>
+                                    {{ translation('yettinchi') }}</p>
                             </li>
                         </ul>
                     </div>
@@ -264,4 +253,23 @@
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('message'))
+            const notyf = new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [{
+                    type: 'info',
+                    background: '#0948B3'
+                }]
+            });
+            notyf.open({
+                type: 'info',
+                message: '{{ Session::get('message') }}'
+            });
+        @endif
+    </script>
 @endsection

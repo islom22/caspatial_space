@@ -71,14 +71,14 @@
                             @endforeach
                             <div class="row mb-2">
                                 <div class="col-12">
-                                    <div>
+                                    <div class="form-group mb-2">
                                         <label for="">Category_id</label>
                                         <select class="form-control" name="serviceCategory_id"
                                             onchange="selectValue(this,{{ $key }})"
                                             id="exampleFormControlSelect{{ $key }}">
                                             @foreach ($servicecategories as $category)
                                                 <option value="{{ $category->id }}" @if(old('serviceCategory_id') == $category->id) selected @endif>
-                                                    {{ $category->title['ru'] }}
+                                                    {{ isset($category->title[$lang]) ? $category->title[$lang] : $category->title['en'] }}
                                                 </option>
                                             @endforeach
                                         </select>

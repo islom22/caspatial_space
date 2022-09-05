@@ -152,6 +152,16 @@
                                                                 value="{{ old('title.' . $language->small) }}">
                                                         @endif
                                                     </div>
+                                                    <div class="row mb-2">
+                                                        <label for="textarea">Description</label>
+                                                        @if (isset($industrie->desc[$language->small]))
+                                                            <textarea class="form-control ckeditor" placeholder="Enter your description..." rows="4"
+                                                                name="desc[{{ $language->small }}]">{{ old('desc.' . $language->small, $industrie->desc[$language->small]) }}</textarea>
+                                                        @else
+                                                            <textarea type="text" class="form-control ckeditor" id="desc" name="desc[{{ $language->small }}]"
+                                                                placeholder="desc" value="{{ old('desc.' . $language->small) }}">{{ old('desc.' . $language->small) }}</textarea>
+                                                        @endif
+                                                    </div>
                                                     <!-- End of Form -->
                                                 </div>
                                             </div>
@@ -164,7 +174,7 @@
                                         @foreach ($industriescategories as $category)
                                             <option value="{{ $category->id }}"
                                                 {{ $category->id == old('industryCategory_id', $industrie->industryCategory_id) ? 'selected' : '' }}>
-                                                {{ $category->title['ru'] }}
+                                                {{ isset($category->title[$lang]) ? $category->title[$lang] : $category->title['en']  }}
                                             </option>
                                         @endforeach
                                     </select>

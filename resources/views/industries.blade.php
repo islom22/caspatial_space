@@ -1,4 +1,5 @@
-@extends('layouts.web')
+@extends('layouts.web1')
+@section('title', 'CAST interenational FZCO')
 
 @section('content')
     <main class="industries-page">
@@ -25,13 +26,13 @@
                                     </div>
                                 @endif
                                 @if (isset($industricategory->title))
-                                    <h6 class="industries__item-title ir-bold">{{ $industricategory->title['ru'] }}
+                                    <h6 class="industries__item-title ir-bold">{{ isset($industricategory->title[$lang]) ? $industricategory->title[$lang] : $industricategory->title['en'] }}
                                     </h6>
                                 @endif
                                 @if (isset($industricategory->subtitle))
-                                    <p class="industries__item-text">{!! $industricategory->subtitle['ru'] !!}</p>
+                                    <p class="industries__item-text">{!! isset($industricategory->subtitle[$lang]) ? $industricategory->subtitle[$lang] : $industricategory->subtitle['en']  !!}</p>
                                 @endif
-                                <div class="industries__item-link">
+                                <div class="industries__item-link d-flex flex-column justify-content-between " style="margin-top:15px" >
                                     <img src="{{ asset('images/arrow-right-red.svg') }}" alt="">
                                 </div>
                             </a>
@@ -41,4 +42,23 @@
             </div>
         @endif
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('message'))
+            const notyf = new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [{
+                    type: 'info',
+                    background: '#0948B3'
+                }]
+            });
+            notyf.open({
+                type: 'info',
+                message: '{{ Session::get('message') }}'
+            });
+        @endif
+    </script>
 @endsection

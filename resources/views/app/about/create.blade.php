@@ -24,6 +24,29 @@
             <div class="col-6 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
+                        <nav>
+                            <div class="nav nav-tabs border-bottom mb-4" id="nav-tab" role="tablist">
+                                @foreach($languages as $language)
+                                    <button class="nav-link border-bottom" id="{{ $language->lang }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $language->lang }}" type="button" role="tab" aria-controls="{{ $language->lang }}" aria-selected="true">{{ $language->lang }}</button>
+                                @endforeach
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            @foreach($languages as $language)
+                                <div class="tab-pane fade" id="{{ $language->lang }}" role="tabpanel" aria-labelledby="{{ $language->lang }}-tab">
+                                    <div class="row mb-4">
+                                        <div class="col-12">
+                                            <!-- Form -->
+                                            <div class="mb-4">
+                                                <label for="textarea">Description</label>
+                                                <textarea type="text" class="form-control ckeditor" id="desc" name="desc[{{ $language->small }}]"
+                                                    placeholder="desc" value="{{ old('desc.' . $language->small) }}">{{ old('desc.' . $language->small) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                         <div class="mb-4">
                             <label for="email">Phone</label>
                             <input type="string" class="form-control" name="phone" value="{{ old('phone')  }}" placeholder="phone" >
@@ -52,10 +75,10 @@
                             <label for="email">Address Second</label>
                             <input type="text" class="form-control" name="address2" value="{{ old('address2')  }}" placeholder="address2" >
                         </div>
-                        <div class="mb-4">
+                        {{-- <div class="mb-4">
                             <label for="email">Description</label>
                             <input type="text" class="form-control" name="desc" value="{{ old('desc')  }}" placeholder="desc" >
-                        </div>
+                        </div> --}}
                         <div class="mb-4">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" name="email" value="{{ old('email')  }}" placeholder="email" >

@@ -11,3 +11,5 @@ document.querySelector(".header__burger").addEventListener("click", (function ()
          document.querySelector(".modal-bg").classList.remove("modal-bg--visible")) })); 
          const elements = document.querySelectorAll(".mask"); 
   elements.forEach(e => { IMask(e, { mask: " 00 000 00 00" }) });
+
+        

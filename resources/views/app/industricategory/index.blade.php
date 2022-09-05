@@ -25,8 +25,8 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($industricategories->currentpage() - 1) * $industricategories->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $industricategory->title['ru'] ?? '--' }}</td>
-                                <td class="fw-bold">{!! $industricategory->subtitle['ru'] ?? '--' !!}</td>
+                                <td class="fw-bold">{{ $industricategory->title['en'] ?? '--' }}</td>
+                                <td class="fw-bold">{!! $industricategory->subtitle['en'] ?? '--' !!}</td>
                                 <td class="fw-bold">
                                     @if (!($industricategory->icon == null))
                                         <img src="{{ asset('uploads/icon/' . $industricategory->icon) }}" alt=""

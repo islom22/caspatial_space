@@ -7,9 +7,11 @@ use App\Models\Banner;
 use App\Models\Connect;
 use App\Models\Industrie;
 use App\Models\IndustrieCategory;
+use App\Models\Lang;
 use App\Models\News;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\Translation;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -23,12 +25,19 @@ class WebController extends Controller
         $industries = Industrie::with('industrieCategory')->get();
         $industriescategories = IndustrieCategory::all();
         $about = About::first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+   
         return view('index', compact(
             'banners',
             'services',
             'industries',
             'industriescategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -37,10 +46,17 @@ class WebController extends Controller
         $industries = Industrie::with('industrieCategory')->paginate(10);
         $industriescategories = IndustrieCategory::all();
         $about = About::first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('industries', compact(
             'industries',
             'industriescategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -52,18 +68,32 @@ class WebController extends Controller
             ->where('industryCategory_id', $industryCategory_id)
             ->paginate(6);
         $industriescategories = IndustrieCategory::where('id', $industryCategory_id)->first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('industries-inner', compact(
             'industries',
             'industriescategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
     public function about()
     {
         $about = About::first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('about', compact(
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -71,9 +101,16 @@ class WebController extends Controller
     {
         $about = About::first();
         $news = News::all();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('news', compact(
             'about',
-            'news'
+            'lang',
+            'news',
+            'langs',
+            'translations'
         ));
     }
 
@@ -81,9 +118,16 @@ class WebController extends Controller
     {
         $new = News::findOrFail($id);
         $about = About::first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('news-inner', compact(
             'about',
-            'new'
+            'lang',
+            'new',
+            'langs',
+            'translations'
         ));
     }
 
@@ -92,10 +136,17 @@ class WebController extends Controller
         $about = About::first();
         $servicecategories = ServiceCategory::all();
         $services = Service::with('serviceImage', 'serviceCategory')->paginate(10);
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('services', compact(
             'services',
             'servicecategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -107,10 +158,17 @@ class WebController extends Controller
             ->where('serviceCategory_id', $serviceCategory_id)
             ->paginate(6);
         $servicecategories = ServiceCategory::all();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('services-inner', compact(
             'services',
             'servicecategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -119,9 +177,16 @@ class WebController extends Controller
         $services = Service::with('serviceImage', 'serviceCategory')->findOrFail($id);
         $about = About::latest()
             ->first();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('services-show', compact(
             'services',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -131,10 +196,17 @@ class WebController extends Controller
         $about = About::latest()
             ->first();
         $industriescategories = IndustrieCategory::all();
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
         return view('industries-show', compact(
             'industries',
             'industriescategories',
-            'about'
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -142,8 +214,15 @@ class WebController extends Controller
     {
         $about = About::latest()
             ->first();
-        return view('connect',compact(
-            'about'
+        $lang = \App::getLocale();
+        $langs = Lang::all();
+        $translations = Translation::all();
+        // $lang = \App::getLocale();
+        return view('connect', compact(
+            'lang',
+            'about',
+            'langs',
+            'translations'
         ));
     }
 
@@ -154,11 +233,11 @@ class WebController extends Controller
         $data['phone'] = $request->phone;
         $data['name'] = $request->name;
         $data['email'] = $request->email;
-         Connect::create($data);
+        Connect::create($data);
 
         return back()->with([
             'success' => true,
-            'message' => 'Заказ оформлен! Скоро с вами свяжемся'
+            'message' => 'We will contact you soon!'
         ]);
     }
 }

@@ -41,24 +41,29 @@
                                                 <label for="email">Title</label>
                                                 <input type="text" class="form-control" name="title[{{ $language->small }}]" placeholder="title" value="{{ old('title.'.$language->small) }}">
                                             </div>
+                                            <div class="mb-2">
+                                                <label for="textarea">Description</label>
+                                                <textarea type="text" class="form-control ckeditor" id="desc" name="desc[{{ $language->small }}]"
+                                                    placeholder="desc" value="{{ old('desc.' . $language->small) }}">{{ old('desc.' . $language->small) }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
-                        <div class="row mb-2">  
+                        <div class="row mb-4">  
                             <div class="col-12">
-                                <div>
+                                <div class="mb-2">
                                     <label for="">Category_id</label>
                                     <select class="form-control" name="industryCategory_id">
                                         @foreach ($industriescategories as $category)
                                             <option value="{{ $category->id }}" @if(old('industryCategory_id') == $category->id) selected @endif>
-                                                {{ $category->title['ru'] }}
+                                                {{ isset($category->title[$lang]) ? $category->title[$lang] : $category->title['en'] }}
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-2">
                                     <label for="formFile" class="form-label">Photo</label>
                                     <input class="form-control" type="file" name="img" accept="image/*">
                                 </div>

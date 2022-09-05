@@ -42,7 +42,7 @@
                                                 <input type="text" class="form-control" name="title[{{ $language->small }}]" placeholder="title" value="{{ old('title.'.$language->small) }}">
                                             </div>
                                             <div class="mb-4">
-                                                <label for="textarea">Desc</label>
+                                                <label for="textarea">Description</label>
                                                 <textarea type="text" class="form-control ckeditor" id="desc" name="desc[{{ $language->small }}]"
                                                     placeholder="desc" value="{{ old('desc.' . $language->small) }}">{{ old('desc.' . $language->small) }}</textarea>
                                             </div>
@@ -55,7 +55,7 @@
                             <div class="col-12">
                                 <div class="mb-4">
                                     <label for="">Date</label>
-                                    <input type="date" class="form-control" 
+                                    <input id="txtDate" type="date" class="form-control" 
                                          name="date"
                                         placeholder="date" value="{{ old('date') }}">
                                 </div>

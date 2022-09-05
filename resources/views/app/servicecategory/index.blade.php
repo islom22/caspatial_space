@@ -23,7 +23,7 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($servicecategories->currentpage() - 1) * $servicecategories->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $servicecategory->title['ru']  ?? '--'  }}</td>
+                                <td class="fw-bold">{{ $servicecategory->title['en']  ?? '--'  }}</td>
                                 <td>
                                     <div class="actions d-flex">
                                         <form class="" onclick="return myFunction();"

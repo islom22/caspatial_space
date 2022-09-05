@@ -1,19 +1,22 @@
 @extends('layouts.web')
+@section('title', 'CAST interenational FZCO')
 
 @section('content')
     <main class="services-inner-page">
-        <div class="page-top">
-            <div class="container">
-                <div class="page-top__inner">
-                    @if (isset($services->title))
-                        <h1 class="page-top__title ir-bold">{{ $services->title['ru'] }}</h1>
-                    @endif
-                    @if (isset($services->subtitle))
-                        <p class="page-top__text">{{ $services->subtitle['ru'] }}</p>
-                    @endif
+        @if (isset($services->title) || isset($services->subtitle))
+            <div class="page-top">
+                <div class="container">
+                    <div class="page-top__inner">
+                        @if (isset($services->title))
+                            <h1 class="page-top__title ir-bold">{{ isset($services->title[$lang]) ? $services->title[$lang] : $services->title['en'] }}</h1>
+                        @endif
+                        @if (isset($services->subtitle))
+                            <p class="page-top__text">{{ isset($services->subtitle[$lang]) ? $services->subtitle[$lang] : $services->subtitle['en'] }}</p>
+                        @endif
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
 
         @if (isset($services->serviceImage[0]->img))
             <div class="container">
@@ -22,19 +25,19 @@
                 </div>
             </div>
         @endif
-        @if (!isset($services->serviceImage[0]->img))
+        {{-- @if (!isset($services->serviceImage[0]->img))
             <div class="container">
                 <div class="img">
                     <img src="{{ asset('upload/service/default-image-720x530.jpg') }}" alt="">
                 </div>
             </div>
-        @endif
+        @endif --}}
 
 
         @if (isset($services->desc))
             <div class="text">
                 <div class="container">
-                    {!! $services->desc['ru'] !!}
+                    {!! isset($services->desc[$lang]) ? $services->desc[$lang] : $services->desc['en'] !!}
                 </div>
             </div>
         @endif
@@ -58,4 +61,23 @@
             </div>
         </div> --}}
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('message'))
+            const notyf = new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [{
+                    type: 'info',
+                    background: '#0948B3'
+                }]
+            });
+            notyf.open({
+                type: 'info',
+                message: '{{ Session::get('message') }}'
+            });
+        @endif
+    </script>
 @endsection

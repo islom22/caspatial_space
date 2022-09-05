@@ -41,7 +41,7 @@ class ServiceCategoryController extends Controller
     {
 
         $request->validate([
-            'title.ru' => 'required|min:1|max:255'
+            'title.en' => 'required|min:1|max:255'
         ]);
         // dd($request->title);
 
@@ -88,7 +88,7 @@ class ServiceCategoryController extends Controller
     {
         $request->validate([
             
-            'title.ru' => 'required|min:1|max:255'
+            'title.en' => 'required|min:1|max:255'
         ]);
 
         $servicecategory = ServiceCategory::find($id);

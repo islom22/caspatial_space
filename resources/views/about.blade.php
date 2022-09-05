@@ -1,4 +1,5 @@
 @extends('layouts.web')
+@section('title', 'CAST interenational FZCO')
 
 @section('content')
     <main class="about-page">
@@ -37,7 +38,7 @@
         @if (isset($about->desc))
             <div class="text">
                 <div class="container">
-                    {{ $about->desc }}
+                    {!! isset($about->desc[$lang]) ? $about->desc[$lang] : $about->desc['en'] !!}
                 </div>
             </div>
         @endif
@@ -57,4 +58,24 @@
             </div>
         </div> --}}
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('message'))
+            const notyf = new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [{
+                    type: 'info',
+                    background: '#0948B3'
+                }]
+            });
+            notyf.open({
+                type: 'info',
+                message: '{{ Session::get('message') }}'
+            });
+        @endif
+    </script>
 @endsection

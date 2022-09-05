@@ -45,7 +45,7 @@ class BannerCantroller extends Controller
     {
 
         $request->validate([
-            'title.ru' => 'required|min:1|max:255',
+            'title.en' => 'required|min:1|max:255',
             'img' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         // dd($request->all());
@@ -143,10 +143,10 @@ class BannerCantroller extends Controller
     public function update(Request $request, $id)
     {
     
-        
+
         $request->validate([
             // 'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'title.ru' => 'required|min:1|max:255'
+            'title.en' => 'required|min:1|max:255'
         ]);
         // @dd($request->all());
 

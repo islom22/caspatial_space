@@ -26,7 +26,7 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($banners->currentpage() - 1) * $banners->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $banner->title['ru'] ?? '--' }}</td>
+                                <td class="fw-bold">{{ $banner->title['en'] ?? '--' }}</td>
                                 {{-- <td class="fw-bold">{!! $banner->desc['ru'] ?? '--' !!}</td> --}}
                                 <td class="fw-bold">
                                     {{ $banner->link ?? '--' }}

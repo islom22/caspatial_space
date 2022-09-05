@@ -15,7 +15,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use App\Models\Industrie;
 use App\Models\IndustrieCategory;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+// use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,20 +66,55 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 Auth::routes();
 
-Route::get('/admin', [HomeController::class, 'index'])->name('admin');
-Route::get('/', [WebController::class, 'index'])->name('index');
-Route::get('/industries', [WebController::class, 'industries'])->name('industries');
-Route::get('/industries-inner/{industryCategory_id}', [WebController::class, 'industries_inner'])->name('industries-inner');
-Route::get('/about', [WebController::class, 'about'])->name('about');
-Route::get('/news', [WebController::class, 'news'])->name('news');
-Route::get('/news/{id}', [WebController::class, 'news_inner'])->name('news_inner');
-Route::get('/services', [WebController::class, 'services'])->name('services');
-Route::get('/services-inner/{serviceCategory_id}', [WebController::class, 'services_inner'])->name('services-inner');
-Route::get('/services/{id}', [WebController::class, 'services_show'])->name('services-show');
-Route::get('/industries/{id}', [WebController::class, 'industries_show'])->name('industries-show');
-Route::get('/connect', [WebController::class, 'connect'])->name('connect');
-Route::get('/order', [WebController::class, 'order'])->name('order');
+Route::group(['prefix'  =>  App\Http\Middleware\LocaleMiddleware::getLocale(), 'middleware' => 'locale'], function(){
+    Route::get('/admin', [HomeController::class, 'index'])->name('admin');
+    Route::get('/', [WebController::class, 'index'])->name('index');
+    Route::get('/industries', [WebController::class, 'industries'])->name('industries');
+    Route::get('/industries-inner/{industryCategory_id}', [WebController::class, 'industries_inner'])->name('industries-inner');
+    Route::get('/about', [WebController::class, 'about'])->name('about');
+    Route::get('/news', [WebController::class, 'news'])->name('news');
+    Route::get('/news/{id}', [WebController::class, 'news_inner'])->name('news_inner');
+    Route::get('/services', [WebController::class, 'services'])->name('services');
+    Route::get('/services-inner/{serviceCategory_id}', [WebController::class, 'services_inner'])->name('services-inner');
+    Route::get('/services/{id}', [WebController::class, 'services_show'])->name('services-show');
+    Route::get('/industries/{id}', [WebController::class, 'industries_show'])->name('industries-show');
+    Route::get('/connect', [WebController::class, 'connect'])->name('connect');
+    Route::get('/order', [WebController::class, 'order'])->name('order');
+});
+
+
 
 
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Переключение языков
+Route::get('setlocale/{lang}', function ($lang) {
+    $referer = Redirect::back()->getTargetUrl(); //URL предыдущей страницы
+    $parse_url = parse_url($referer, PHP_URL_PATH); //URI предыдущей страницы
+
+    //разбиваем на массив по разделителю
+    $segments = explode('/', $parse_url);
+
+    //Если URL (где нажали на переключение языка) содержал корректную метку языка
+    if (in_array($segments[1], App\Http\Middleware\LocaleMiddleware::$languages)) {
+
+        unset($segments[1]); //удаляем метку
+    }
+
+    //Добавляем метку языка в URL (если выбран не язык по-умолчанию)
+    if ($lang != App\Http\Middleware\LocaleMiddleware::$mainLanguage){
+        array_splice($segments, 1, 0, $lang);
+    }
+
+    //формируем полный URL
+    // dd($lang);
+    $url = Request::root().implode("/", $segments);
+
+    //если были еще GET-параметры - добавляем их
+    if(parse_url($referer, PHP_URL_QUERY)){
+        $url = $url.'?'. parse_url($referer, PHP_URL_QUERY);
+    }
+
+    return redirect($url); //Перенаправляем назад на ту же страницу
+
+})->name('setlocale');

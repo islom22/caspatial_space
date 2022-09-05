@@ -25,10 +25,10 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($industries->currentpage() - 1) * $industries->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $industrie->title['ru'] ?? '--' }}</td>
+                                <td class="fw-bold">{{ $industrie->title['en'] ?? '--' }}</td>
                                 <td class="fw-bold">
-                                    {{-- {{ $industrie->industrieCategory->title ? $industrie->industrieCategory->title['ru'] : '--' }} --}}
-                                    {{ $industrie->industrieCategory->title['ru'] ?? '--' }}
+                                    {{-- {{ $industrie->industrieCategory->title ? $industrie->industrieCategory->title['en'] : '--' }} --}}
+                                    {{ $industrie->industrieCategory->title['en'] ?? '--' }}
                                 </td>
                                 <td>
                                     @if (!($industrie->img == null))

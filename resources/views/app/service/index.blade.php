@@ -14,7 +14,7 @@
                             <th class="border-0 rounded-start">#</th>
                             <th class="border-0">Title</th>
                             <th class="border-0">Subtitle</th>
-                            <th class="border-0">Desc</th>
+                            {{-- <th class="border-0">Desc</th> --}}
                             <th class="border-0">Category</th>
                             {{-- <th class="border-0">Image</th> --}}
                             <th class="border-0 rounded-end">Actions</th>
@@ -28,10 +28,10 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($services->currentpage() - 1) * $services->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $service->title['ru'] ?? '--' }}</td>
-                                <td class="fw-bold">{{ $service->subtitle['ru'] ?? '--' }}</td>
-                                <td class="fw-bold">{!! $service->desc['ru'] ?? '--' !!}</td>
-                                <td class="fw-bold">{{ $service->serviceCategory->title['ru'] ?? '--' }}</td>
+                                <td class="fw-bold">{{ $service->title['en'] ?? '--' }}</td>
+                                <td class="fw-bold">{{ $service->subtitle['en'] ?? '--' }}</td>
+                                {{-- <td class="fw-bold">{!! $service->desc['en'] ?? '--' !!}</td> --}}
+                                <td class="fw-bold">{{ $service->serviceCategory->title['en'] ?? '--' }}</td>
                                 {{-- <td>
                                 <img src="{{asset('uploads/service/'.$service->img)}}" alt="" style="max-width: 250px">
                             </td> --}}

@@ -13,7 +13,7 @@
                         <tr>
                             <th class="border-0 rounded-start">#</th>
                             <th class="border-0">Title</th>
-                            <th class="border-0">Description</th>
+                            {{-- <th class="border-0">Description</th> --}}
                             <th class="border-0">Date</th>
                             <th class="border-0">Image</th>
                             <th class="border-0 rounded-end">Actions</th>
@@ -26,10 +26,11 @@
                                 <td><a href="#"
                                         class="text-primary fw-bold">{{ ($news->currentpage() - 1) * $news->perpage() + $loop->index + 1 }}</a>
                                 </td>
-                                <td class="fw-bold">{{ $new->title['ru'] ?? '--' }}</td>
-                                <td class="fw-bold">{!! $new->desc['ru'] ?? '--' !!}</td>
+                                <td class="fw-bold">{{ $new->title['en'] ?? '--' }}</td>
+                                {{-- <td class="fw-bold">{!! $new->desc['en'] ?? '--' !!}</td> --}}
                                 <td class="fw-bold">
-                                    {{ $new->date ?? '--' }}
+                                    {{-- {{ $new->date ?? '--' }} --}}
+                                    {{date('d.m.Y', strtotime($new->date))}}
                                     {{-- {{$new->date->format('d-m-Y')}} --}}
                                 </td>
                                 <td>

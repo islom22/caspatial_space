@@ -45,7 +45,7 @@ class NewController extends Controller
     {
 
         $request->validate([
-            'title.ru' => 'required|min:1|max:255',
+            'title.en' => 'required|min:1|max:255',
             'img' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         // dd($request->title);
@@ -144,7 +144,7 @@ class NewController extends Controller
         // dd($request);
         $request->validate([
             // 'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'title.ru' => 'required|min:1|max:255'
+            'title.en' => 'required|min:1|max:255'
         ]);
 
         $news = News::find($id);

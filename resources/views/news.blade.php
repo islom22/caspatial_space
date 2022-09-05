@@ -1,5 +1,7 @@
 @extends('layouts.web')
 
+@section('title', 'CAST interenational FZCO')
+
 @section('content')
     <main class="news-page">
         <div class="page-top">
@@ -13,25 +15,57 @@
             </div>
         </div>
 
-        <div class="cards">
-            <div class="container">
-                <div class="cards__inner">
-                    @foreach($news as $item)
-                    <a href="{{ route('news_inner', ['id' => $item->id]) }}" class="card">
-                        <div class="card__img">
-                            <img src="{{ asset('uploads/news/' . $item->img) }}" alt="">
-                        </div>
-                        <p class="card__date">
-                            {{ $item->date }}
-                        </p>
-                        <h6 class="card__title ir-bold">
-                            {{ $item->title['ru'] }}
-                            <img src="{{ asset('images/arrow-right-red-small.svg') }}" alt="">
-                        </h6>
-                    </a>
-                    @endforeach
+        @if (isset($news[0]))
+            <div class="cards">
+                <div class="container">
+                    <div class="cards__inner">
+                        @foreach ($news as $item)
+                            <a href="{{ route('news_inner', ['id' => $item->id]) }}" class="card">
+                                @if (isset($item->img))
+                                    <div class="card__img">
+                                        <img src="{{ asset('uploads/news/' . $item->img) }}" alt="">
+                                    </div>
+                                @else
+                                    <div class="card__img">
+                                        <img src="{{ asset('upload/service/default-image-720x530.jpg') }}" alt="">
+                                    </div>
+                                @endif
+                                @if (isset($item->date))
+                                    <p class="card__date">
+                                        {{-- {{ $item->date }} --}}
+                                        {{date('d.m.Y', strtotime($item->date))}}
+                                    </p>
+                                @endif
+                                @if (isset($item->title))
+                                    <h6 class="card__title ir-bold ">
+                                        {{ isset($item->title[$lang]) ? $item->title[$lang] : $item->title['en'] }}
+                                        <img src="{{ asset('images/arrow-right-red-small.svg') }}" alt="">
+                                    </h6>
+                                @endif
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script type="text/javascript">
+        @if (Session::has('message'))
+            const notyf = new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [{
+                    type: 'info',
+                    background: '#0948B3'
+                }]
+            });
+            notyf.open({
+                type: 'info',
+                message: '{{ Session::get('message') }}'
+            });
+        @endif
+    </script>
 @endsection

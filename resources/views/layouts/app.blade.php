@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Dashboard</title>
     <link rel="shortcut icon" href="{{ asset('images/shortcut.svg') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Sweet Alert -->
     <link type="text/css" href="{{ asset('app/sweetalert2.min.css') }}" rel="stylesheet">
@@ -39,16 +43,16 @@
         CKEDITOR.config.filebrowserUploadUrl = "{{ route('upload-image', ['_token' => csrf_token()]) }}";
         CKEDITOR.config.filebrowserUploadMethod = 'form';
     </script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>                                                 --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 
-  <meta name="csrf-token" content="{{ csrf_token() }}"/>
-  <style>
-    .error {
-      color: #ca0505;
-    }
-  </style>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <style>
+        .error {
+            color: #ca0505;
+        }
+    </style>
     <style>
         .table td,
         .table th {
@@ -94,27 +98,25 @@
                         <span class="sidebar-text">Applications</span>
                     </a>
                 </li> --}}
-                
-                <li class="nav-item {{ Route::currentRouteName() == 'abouts.index' ? 'active' : '' }} @if (request()->is('admin/abouts') || request()->is('admin/abouts/*')) active @endif">
-                    <a href="{{ route('abouts.index') }}" class="nav-link">
-                         <span class="sidebar-icon"> 
-                            <i class="fas fa-clipboard me-2"></i>
-                            {{-- <i class="fas fa-clipboard me-2"></i> --}}
-                            {{-- <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path></svg> --}}
-                            </span>
-                          {{-- /  <span class="sidebar-icon"> --}}
-                                {{-- <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
-                                fill="#9CA3AF" viewBox="0 0 512 512">
+
+                <li
+                    class="nav-item {{ Route::currentRouteName() == 'banners.index' ? 'active' : '' }} @if (request()->is('admin/banners') || request()->is('admin/banners/*')) active @endif">
+                    <a href="{{ route('banners.index') }}" class="nav-link">
+                         <span class="sidebar-icon">
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-collection me-2" viewBox="0 0 16 16">
                                 <path
-                                d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z" />
-                            </svg> --}}
-                            {{-- <i class="fas fa-clipboard me-2"></i> --}}
-                        </span>
-                        <span class="sidebar-text">About us</span>
+                                    d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16" fill="#9CA3AF" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 53.46L300.1 7.261C307 1.034 315.1-1.431 324.4 .8185C332.8 3.068 339.3 9.679 341.4 18.1L357.3 80.6L419.3 63.07C427.7 60.71 436.7 63.05 442.8 69.19C448.1 75.34 451.3 84.33 448.9 92.69L431.4 154.7L493.9 170.6C502.3 172.7 508.9 179.2 511.2 187.6C513.4 196 510.1 204.1 504.7 211L458.5 256L504.7 300.1C510.1 307 513.4 315.1 511.2 324.4C508.9 332.8 502.3 339.3 493.9 341.4L431.4 357.3L448.9 419.3C451.3 427.7 448.1 436.7 442.8 442.8C436.7 448.1 427.7 451.3 419.3 448.9L357.3 431.4L341.4 493.9C339.3 502.3 332.8 508.9 324.4 511.2C315.1 513.4 307 510.1 300.1 504.7L256 458.5L211 504.7C204.1 510.1 196 513.4 187.6 511.2C179.2 508.9 172.7 502.3 170.6 493.9L154.7 431.4L92.69 448.9C84.33 451.3 75.34 448.1 69.19 442.8C63.05 436.7 60.71 427.7 63.07 419.3L80.6 357.3L18.1 341.4C9.679 339.3 3.068 332.8 .8186 324.4C-1.431 315.1 1.034 307 7.261 300.1L53.46 256L7.261 211C1.034 204.1-1.431 196 .8186 187.6C3.068 179.2 9.679 172.7 18.1 170.6L80.6 154.7L63.07 92.69C60.71 84.33 63.05 75.34 69.19 69.19C75.34 63.05 84.33 60.71 92.69 63.07L154.7 80.6L170.6 18.1C172.7 9.679 179.2 3.068 187.6 .8185C196-1.431 204.1 1.034 211 7.261L256 53.46z"/></svg> --}}
+                            <i class="fas fa-th-large fa-fw me-2"></i>
+                        </span> 
+                        <span class="sidebar-text">Banner</span>
                     </a>
                 </li>
-                
-                <li class="nav-item {{ Route::currentRouteName() == 'applications.index' ? 'active' : '' }} @if (request()->is('admin/applications') || request()->is('admin/applications/*')) active @endif">
+
+                <li
+                    class="nav-item {{ Route::currentRouteName() == 'applications.index' ? 'active' : '' }} @if (request()->is('admin/applications') || request()->is('admin/applications/*')) active @endif">
                     <a href="{{ route('applications.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             {{-- <i class="fa-solid fa-city me-2"></i> --}}
@@ -124,7 +126,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ Route::currentRouteName() == 'news.index' ? 'active' : '' }} @if (request()->is('admin/news') || request()->is('admin/news/*')) active @endif">
+                <li
+                    class="nav-item {{ Route::currentRouteName() == 'news.index' ? 'active' : '' }} @if (request()->is('admin/news') || request()->is('admin/news/*')) active @endif">
                     <a href="{{ route('news.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             {{-- <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
@@ -132,42 +135,23 @@
                             <path
                             d="M352 288h-32V224h32c52.94 0 96-43.06 96-96s-43.06-96-96-96s-96 43.06-96 96v32H192V128c0-52.94-43.06-96-96-96S0 75.06 0 128s43.06 96 96 96h32v64H96c-52.94 0-96 43.06-96 96s43.06 96 96 96s96-43.06 96-96v-32h64v32c0 52.94 43.06 96 96 96s96-43.06 96-96S404.9 288 352 288zM320 128c0-17.66 14.34-32 32-32s32 14.34 32 32s-14.34 32-32 32h-32V128zM128 384c0 17.66-14.34 32-32 32s-32-14.34-32-32s14.34-32 32-32h32V384zM128 160H96C78.34 160 64 145.7 64 128s14.34-32 32-32s32 14.34 32 32V160zM256 288H192V224h64V288zM352 416c-17.66 0-32-14.34-32-32v-32h32c17.66 0 32 14.34 32 32S369.7 416 352 416z" />
                         </svg> --}}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-2" viewBox="0 0 16 16">
-                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                            <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-                          </svg>
-                    </span>
-                    <span class="sidebar-text">News</span>
-                </a>
-            </li>
-            
-            
-                            <li class="nav-item {{ Route::currentRouteName() == 'industricategories.index' ? 'active' : '' }} @if (request()->is('admin/industricategories') || request()->is('admin/industricategories/*')) active @endif">
-                                <a href="{{ route('industricategories.index') }}" class="nav-link">
-                                    <span class="sidebar-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
-                                            fill="#9CA3AF" viewBox="0 0 512 512">
-                                            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                            <path
-                                                d="M512 448C512 483.3 483.3 512 448 512H64C28.65 512 0 483.3 0 448V224C0 188.7 28.65 160 64 160H448C483.3 160 512 188.7 512 224V448zM440 80C453.3 80 464 90.75 464 104C464 117.3 453.3 128 440 128H72C58.75 128 48 117.3 48 104C48 90.75 58.75 80 72 80H440zM392 0C405.3 0 416 10.75 416 24C416 37.25 405.3 48 392 48H120C106.7 48 96 37.25 96 24C96 10.75 106.7 0 120 0H392z" />
-                                        </svg>
-                                    </span>
-                                    <span class="sidebar-text">Industry categories</span>
-                                </a>
-                            </li>
-            
-            
-                            <li class="nav-item {{ Route::currentRouteName() == 'industries.index' ? 'active' : '' }} @if (request()->is('admin/industries') || request()->is('admin/industries/*')) active @endif">
-                                <a href="{{ route('industries.index') }}" class="nav-link">
-                                    <span class="sidebar-icon">
-                                        <i class="fa-solid fa-city me-2"></i>
-                                    </span>
-                                    <span class="sidebar-text">Industry</span>
-                                </a>
-                            </li>
-            
-                <li class="nav-item {{ Route::currentRouteName() == 'servicecategories.index' ? 'active' : '' }} @if (request()->is('admin/servicecategories') || request()->is('admin/servicecategories/*')) active @endif">
-                    <a href="{{ route('servicecategories.index') }}" class="nav-link">
+                            {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                <path
+                                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                            </svg> --}}
+                            <i class="fa-brands fa-stack-overflow me-2"></i>
+                        </span>
+                        <span class="sidebar-text">News</span>
+                    </a>
+                </li>
+
+
+                {{-- <li
+                    class="nav-item {{ Route::currentRouteName() == 'industricategories.index' ? 'active' : '' }} @if (request()->is('admin/industricategories') || request()->is('admin/industricategories/*')) active @endif">
+                    <a href="{{ route('industricategories.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
                                 fill="#9CA3AF" viewBox="0 0 512 512">
@@ -176,36 +160,139 @@
                                     d="M512 448C512 483.3 483.3 512 448 512H64C28.65 512 0 483.3 0 448V224C0 188.7 28.65 160 64 160H448C483.3 160 512 188.7 512 224V448zM440 80C453.3 80 464 90.75 464 104C464 117.3 453.3 128 440 128H72C58.75 128 48 117.3 48 104C48 90.75 58.75 80 72 80H440zM392 0C405.3 0 416 10.75 416 24C416 37.25 405.3 48 392 48H120C106.7 48 96 37.25 96 24C96 10.75 106.7 0 120 0H392z" />
                             </svg>
                         </span>
-                        <span class="sidebar-text">Service categories</span>
+                        <span class="sidebar-text">Industry categories</span>
                     </a>
-                </li>
+                </li> --}}
 
-                <li class="nav-item {{ Route::currentRouteName() == 'services.index' ? 'active' : '' }} @if (request()->is('admin/services') || request()->is('admin/services/*')) active @endif">
-                    <a href="{{ route('services.index') }}" class="nav-link" >
-                        <span class="sidebar-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
-                            fill="#9CA3AF" viewBox="0 0 448 512">
-                            <path
-                            d="M352 288h-32V224h32c52.94 0 96-43.06 96-96s-43.06-96-96-96s-96 43.06-96 96v32H192V128c0-52.94-43.06-96-96-96S0 75.06 0 128s43.06 96 96 96h32v64H96c-52.94 0-96 43.06-96 96s43.06 96 96 96s96-43.06 96-96v-32h64v32c0 52.94 43.06 96 96 96s96-43.06 96-96S404.9 288 352 288zM320 128c0-17.66 14.34-32 32-32s32 14.34 32 32s-14.34 32-32 32h-32V128zM128 384c0 17.66-14.34 32-32 32s-32-14.34-32-32s14.34-32 32-32h32V384zM128 160H96C78.34 160 64 145.7 64 128s14.34-32 32-32s32 14.34 32 32V160zM256 288H192V224h64V288zM352 416c-17.66 0-32-14.34-32-32v-32h32c17.66 0 32 14.34 32 32S369.7 416 352 416z" />
-                        </svg>
-                    </span>
-                        <span class="sidebar-text ">Service</span>
-                    </a>
-                </li>
-
-                <li class="nav-item {{ Route::currentRouteName() == 'banners.index' ? 'active' : '' }} @if (request()->is('admin/banners') || request()->is('admin/banners/*')) active @endif">
-                    <a href="{{ route('banners.index') }}" class="nav-link">
-                        <span class="sidebar-icon">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16" fill="#9CA3AF" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 53.46L300.1 7.261C307 1.034 315.1-1.431 324.4 .8185C332.8 3.068 339.3 9.679 341.4 18.1L357.3 80.6L419.3 63.07C427.7 60.71 436.7 63.05 442.8 69.19C448.1 75.34 451.3 84.33 448.9 92.69L431.4 154.7L493.9 170.6C502.3 172.7 508.9 179.2 511.2 187.6C513.4 196 510.1 204.1 504.7 211L458.5 256L504.7 300.1C510.1 307 513.4 315.1 511.2 324.4C508.9 332.8 502.3 339.3 493.9 341.4L431.4 357.3L448.9 419.3C451.3 427.7 448.1 436.7 442.8 442.8C436.7 448.1 427.7 451.3 419.3 448.9L357.3 431.4L341.4 493.9C339.3 502.3 332.8 508.9 324.4 511.2C315.1 513.4 307 510.1 300.1 504.7L256 458.5L211 504.7C204.1 510.1 196 513.4 187.6 511.2C179.2 508.9 172.7 502.3 170.6 493.9L154.7 431.4L92.69 448.9C84.33 451.3 75.34 448.1 69.19 442.8C63.05 436.7 60.71 427.7 63.07 419.3L80.6 357.3L18.1 341.4C9.679 339.3 3.068 332.8 .8186 324.4C-1.431 315.1 1.034 307 7.261 300.1L53.46 256L7.261 211C1.034 204.1-1.431 196 .8186 187.6C3.068 179.2 9.679 172.7 18.1 170.6L80.6 154.7L63.07 92.69C60.71 84.33 63.05 75.34 69.19 69.19C75.34 63.05 84.33 60.71 92.69 63.07L154.7 80.6L170.6 18.1C172.7 9.679 179.2 3.068 187.6 .8185C196-1.431 204.1 1.034 211 7.261L256 53.46z"/></svg>
+                <li class="nav-item {{ Route::currentRouteName() == 'industries.index' ? 'active' : '' }}">
+                    <span class="nav-link d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-all" aria-expanded="false">
+                        <span>
+                            {{-- <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </span> --}}
+                            <span class="sidebar-icon">
+                                <i class="fa-solid fa-city me-2"></i>
+                            </span>
+                            <span class="sidebar-text">Industries</span>
                         </span>
-                        <span class="sidebar-text">Banner</span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </span>
+                    <div class="multi-level collapse" role="list" id="submenu-all" aria-expanded="false"
+                        style="">
+                        <ul class="flex-column nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('industries.index') }}">
+                                    <span class="sidebar-text">Industries</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="multi-level collapse" role="list" id="submenu-all" aria-expanded="false"
+                        style="">
+                        <ul class="flex-column nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('industricategories.index') }}">
+                                    <span class="sidebar-text">Categories</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                
+
+                <li class="nav-item {{ Route::currentRouteName() == 'services.index' ? 'active' : '' }}">
+                    <span class="nav-link d-flex justify-content-between align-items-center collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#submenu-add" aria-expanded="false">
+                        <span>
+                        
+                            <span class="sidebar-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
+                                    fill="#9CA3AF" viewBox="0 0 448 512">
+                                    <path
+                                        d="M352 288h-32V224h32c52.94 0 96-43.06 96-96s-43.06-96-96-96s-96 43.06-96 96v32H192V128c0-52.94-43.06-96-96-96S0 75.06 0 128s43.06 96 96 96h32v64H96c-52.94 0-96 43.06-96 96s43.06 96 96 96s96-43.06 96-96v-32h64v32c0 52.94 43.06 96 96 96s96-43.06 96-96S404.9 288 352 288zM320 128c0-17.66 14.34-32 32-32s32 14.34 32 32s-14.34 32-32 32h-32V128zM128 384c0 17.66-14.34 32-32 32s-32-14.34-32-32s14.34-32 32-32h32V384zM128 160H96C78.34 160 64 145.7 64 128s14.34-32 32-32s32 14.34 32 32V160zM256 288H192V224h64V288zM352 416c-17.66 0-32-14.34-32-32v-32h32c17.66 0 32 14.34 32 32S369.7 416 352 416z" />
+                                </svg>
+                            </span>
+                            <span class="sidebar-text">Service</span>
+                        </span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </span>
+                    </span>
+                    <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
+                        style="">
+                        <ul class="flex-column nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('services.index') }}">
+                                    <span class="sidebar-text">Service</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
+                        style="">
+                        <ul class="flex-column nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('servicecategories.index') }}">
+                                    <span class="sidebar-text">Categories</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+             
+
+                
+
+                <li
+                    class="nav-item {{ Route::currentRouteName() == 'abouts.index' ? 'active' : '' }} @if (request()->is('admin/abouts') || request()->is('admin/abouts/*')) active @endif">
+                    <a href="{{ route('abouts.index') }}" class="nav-link">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-clipboard me-2"></i>
+                            {{-- <i class="fas fa-clipboard me-2"></i> --}}
+                            {{-- <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path></svg> --}}
+                        </span>
+                        {{-- /  <span class="sidebar-icon"> --}}
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
+                            fill="#9CA3AF" viewBox="0 0 512 512">
+                            <path
+                            d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z" />
+                        </svg> --}}
+                        {{-- <i class="fas fa-clipboard me-2"></i> --}}
+                        </span>
+                        <span class="sidebar-text">About us</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ Route::currentRouteName() == 'users.index' ? 'active' : '' }} @if (request()->is('admin/users') || request()->is('admin/users/*')) active @endif">
+                <li
+                    class="nav-item {{ Route::currentRouteName() == 'users.index' ? 'active' : '' }} @if (request()->is('admin/users') || request()->is('admin/users/*')) active @endif">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <span class="sidebar-icon">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16" fill="#9CA3AF" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 53.46L300.1 7.261C307 1.034 315.1-1.431 324.4 .8185C332.8 3.068 339.3 9.679 341.4 18.1L357.3 80.6L419.3 63.07C427.7 60.71 436.7 63.05 442.8 69.19C448.1 75.34 451.3 84.33 448.9 92.69L431.4 154.7L493.9 170.6C502.3 172.7 508.9 179.2 511.2 187.6C513.4 196 510.1 204.1 504.7 211L458.5 256L504.7 300.1C510.1 307 513.4 315.1 511.2 324.4C508.9 332.8 502.3 339.3 493.9 341.4L431.4 357.3L448.9 419.3C451.3 427.7 448.1 436.7 442.8 442.8C436.7 448.1 427.7 451.3 419.3 448.9L357.3 431.4L341.4 493.9C339.3 502.3 332.8 508.9 324.4 511.2C315.1 513.4 307 510.1 300.1 504.7L256 458.5L211 504.7C204.1 510.1 196 513.4 187.6 511.2C179.2 508.9 172.7 502.3 170.6 493.9L154.7 431.4L92.69 448.9C84.33 451.3 75.34 448.1 69.19 442.8C63.05 436.7 60.71 427.7 63.07 419.3L80.6 357.3L18.1 341.4C9.679 339.3 3.068 332.8 .8186 324.4C-1.431 315.1 1.034 307 7.261 300.1L53.46 256L7.261 211C1.034 204.1-1.431 196 .8186 187.6C3.068 179.2 9.679 172.7 18.1 170.6L80.6 154.7L63.07 92.69C60.71 84.33 63.05 75.34 69.19 69.19C75.34 63.05 84.33 60.71 92.69 63.07L154.7 80.6L170.6 18.1C172.7 9.679 179.2 3.068 187.6 .8185C196-1.431 204.1 1.034 211 7.261L256 53.46z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="me-2" width="16" height="16"
+                                fill="#9CA3AF" viewBox="0 0 512 512">
+                                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                <path
+                                    d="M256 53.46L300.1 7.261C307 1.034 315.1-1.431 324.4 .8185C332.8 3.068 339.3 9.679 341.4 18.1L357.3 80.6L419.3 63.07C427.7 60.71 436.7 63.05 442.8 69.19C448.1 75.34 451.3 84.33 448.9 92.69L431.4 154.7L493.9 170.6C502.3 172.7 508.9 179.2 511.2 187.6C513.4 196 510.1 204.1 504.7 211L458.5 256L504.7 300.1C510.1 307 513.4 315.1 511.2 324.4C508.9 332.8 502.3 339.3 493.9 341.4L431.4 357.3L448.9 419.3C451.3 427.7 448.1 436.7 442.8 442.8C436.7 448.1 427.7 451.3 419.3 448.9L357.3 431.4L341.4 493.9C339.3 502.3 332.8 508.9 324.4 511.2C315.1 513.4 307 510.1 300.1 504.7L256 458.5L211 504.7C204.1 510.1 196 513.4 187.6 511.2C179.2 508.9 172.7 502.3 170.6 493.9L154.7 431.4L92.69 448.9C84.33 451.3 75.34 448.1 69.19 442.8C63.05 436.7 60.71 427.7 63.07 419.3L80.6 357.3L18.1 341.4C9.679 339.3 3.068 332.8 .8186 324.4C-1.431 315.1 1.034 307 7.261 300.1L53.46 256L7.261 211C1.034 204.1-1.431 196 .8186 187.6C3.068 179.2 9.679 172.7 18.1 170.6L80.6 154.7L63.07 92.69C60.71 84.33 63.05 75.34 69.19 69.19C75.34 63.05 84.33 60.71 92.69 63.07L154.7 80.6L170.6 18.1C172.7 9.679 179.2 3.068 187.6 .8185C196-1.431 204.1 1.034 211 7.261L256 53.46z" />
+                            </svg>
                         </span>
                         <span class="sidebar-text">Profile</span>
                     </a>
@@ -221,31 +308,24 @@
                         <span class="sidebar-text">Translations</span>
                     </a>
                 </li>
+
                 <li class="nav-item {{ Route::currentRouteName() == 'langs.index' ? 'active' : '' }}">
-                    <span class="nav-link d-flex justify-content-between align-items-center collapsed"
-                        data-bs-toggle="collapse" data-bs-target="#submenu-app" aria-expanded="false">
+                    <span class="nav-link d-flex justify-content-between align-items-center collapsed" data-bs-toggle="collapse" data-bs-target="#submenu-app" aria-expanded="false">
                         <span>
                             <span class="sidebar-icon">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                        clip-rule="evenodd"></path>
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
                                 </svg>
                             </span>
                             <span class="sidebar-text">Settings</span>
                         </span>
                         <span class="link-arrow">
-                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                    clip-rule="evenodd"></path>
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
                             </svg>
                         </span>
                     </span>
-                    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false"
-                        style="">
+                    <div class="multi-level collapse" role="list" id="submenu-app" aria-expanded="false" style="">
                         <ul class="flex-column nav">
                             <li class="nav-item ">
                                 <a class="nav-link" href="{{ route('langs.index') }}">
@@ -255,6 +335,8 @@
                         </ul>
                     </div>
                 </li>
+
+                
             </ul>
         </div>
     </nav>
@@ -267,9 +349,13 @@
                     <!-- Navbar links -->
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <button class="border-0" style="background-color: #fff;padding: 12px 20px;border-radius: 8px;">
-                            <svg class="dropdown-icon text-danger me-2" fill="none" width="20" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        <button class="border-0"
+                            style="background-color: #fff;padding: 12px 20px;border-radius: 8px;">
+                            <svg class="dropdown-icon text-danger me-2" fill="none" width="20"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                </path>
                             </svg>
                             Logout
                         </button>
@@ -280,12 +366,19 @@
 
         @yield('content')
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+        </script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+        </script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+            integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script src="{{ asset('assets/js/script.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
 
         <footer class="bg-white rounded shadow p-5 mb-4 mt-4">
             <div class="row">
@@ -353,8 +446,14 @@
         @endif
     </script>
 
+
     @yield('scripts')
 
 </body>
+<style>
+    .active {
+        font-weight: 600;
+    }
+</style>
 
 </html>

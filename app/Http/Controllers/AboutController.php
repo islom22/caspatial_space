@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Lang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -17,7 +18,11 @@ class   AboutController extends Controller
     public function index()
     {
         $about = About::latest()->paginate(10);
-        return view('app.about.index', compact('about'));
+        $languages = Lang::all();
+        return view('app.about.index', compact(
+            'about',
+            'languages'
+        ));
     }
 
     /**
@@ -27,7 +32,10 @@ class   AboutController extends Controller
      */
     public function create()
     {
-        return view('app.about.create');
+        $languages = Lang::all();
+        return view('app.about.create',compact(
+            'languages'
+        ));
     }
 
     /**
@@ -39,7 +47,7 @@ class   AboutController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+    //   @dd($data);
         $request->validate([
             'img' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'phone' => 'required',
@@ -124,9 +132,11 @@ class   AboutController extends Controller
      */
     public function edit($id)
     {
+        $languages = Lang::all();
         $about = About::find($id);
         return view('app.about.edit', compact(
-            'about'
+            'about',
+            'languages'
         ));
     }
 

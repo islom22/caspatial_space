@@ -18,7 +18,7 @@
                     <tr>
                         <th class="border-0 rounded-start">#</th>
                         <th class="border-0">Phone</th>
-                        <th class="border-0">Description</th>
+                        {{-- <th class="border-0">Description</th> --}}
                         <th class="border-0">First Image</th>
                         <th class="border-0 rounded-end">Actions</th>
                     </tr>
@@ -29,9 +29,9 @@
                         <tr>
                             <td><a href="#" class="text-primary fw-bold">{{ ($about ->currentpage()-1) * $about ->perpage() + $loop->index + 1 }}</a></td>
                             <td class="fw-bold">{{ $item->phone ?? '--' }}</td>
-                            <td>
-                                {{ $item->desc ?? '--'  }}
-                            </td>
+                            {{-- <td>
+                                {{ $item->desc['ru'] ?? '--'  }}
+                            </td> --}}
                             <td>
                                 @if(!($item->img == null))
                                     <img src="{{asset('uploads/about/'.$item->img )}}" alt="" style="max-width: 250px">

@@ -21,4 +21,9 @@ class About extends Model
         'desc',
         'email'
 ];
+
+protected $casts = [
+    'desc'=> 'array'
+]; 
+
 }

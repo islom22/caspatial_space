@@ -11,11 +11,13 @@ class Industrie extends Model
     protected $fillable = [
         'title',
         'img',
-        'industryCategory_id'
+        'industryCategory_id',
+        'desc'
     ];
 
     protected $casts = [
-        'title' => 'array'
+        'title' => 'array',
+        'desc' => 'array'
     ];
 
     public function industrieCategory()

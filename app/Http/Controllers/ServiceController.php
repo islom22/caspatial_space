@@ -38,11 +38,12 @@ class ServiceController extends Controller
         $servicecategories = ServiceCategory::all();
         $languages = Lang::all();
         $services = Service::all();
-
+        $lang = \App::getLocale();
         return view('app.service.create', compact(
             'servicecategories',
             'services',
-            'languages'
+            'languages',
+            'lang'
         ));
     }
 
@@ -100,7 +101,7 @@ class ServiceController extends Controller
         $data = $request->all();
         // @dd($data);  
         $request->validate([
-            'title.ru' => 'required|max:255',
+            'title.en' => 'required|max:255',
             'title' => 'required',
             // 'serviceCategory' => 'required',
             'img.*' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -152,11 +153,13 @@ class ServiceController extends Controller
         $servicecategories = ServiceCategory::all();
         $service = Service::with('serviceImage')->findOrFail($id);
         $languages = Lang::all();
+        $lang = \App::getLocale();
         // $image = ProductImage::all();
         return view('app.service.edit', compact(
             'service',
             'servicecategories',
             'languages',
+            'lang'
             // 'image'
         ));
     }
@@ -172,7 +175,7 @@ class ServiceController extends Controller
     {
         
         $request->validate([
-            'title.ru' => 'required',
+            'title.en' => 'required',
             // 'serviceCategory_id' => 'required',
             // 'img.*' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'img' => 'required'

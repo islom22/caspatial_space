@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->text('title')->nullable();
             $table->bigInteger('industryCategory_id')->nullable();
+            $table->text('desc')->nullable();
             $table->timestamps();
         });
     }

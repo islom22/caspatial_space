@@ -145,7 +145,7 @@
                                 @foreach ($servicecategories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ $category->id == old('serviceCategory_id', $service->serviceCategory_id) ? 'selected' : '' }}>
-                                        {{ $category->title['ru'] }}
+                                        {{ isset($category->title[$lang]) ? $category->title[$lang] : $category->title['en'] }}
                                     </option>
                                 @endforeach
                             </select>

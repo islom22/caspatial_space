@@ -21,4 +21,6 @@ class News extends Model
         // 'date' => 'date:d-m-Y'
    ]; 
 
+  
+
 }

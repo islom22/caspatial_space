@@ -27,7 +27,7 @@
                       <td>{{ $lang->small }}</td>
                       <td>
                         <div class="actions d-flex flex-column">
-                          @if($lang->small != 'ru')
+                          @if($lang->small != 'en')
                           <form class="" action="{{ route('langs.destroy', ['lang' => $lang->id]) }}" method="post">
                             @csrf
                             @method('delete')

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\File;
 
 class IndustrieController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -35,9 +35,12 @@ class IndustrieController extends Controller
     {
         $languages = Lang::all();
         $industriescategories = IndustrieCategory::all();
-        return view('app.industrie.create', compact('languages',
-        'industriescategories'
-    ));
+        $lang = \App::getLocale();
+        return view('app.industrie.create', compact(
+            'languages',
+            'industriescategories',
+            'lang'
+        ));
     }
 
     /**
@@ -50,13 +53,14 @@ class IndustrieController extends Controller
     {
 
         $request->validate([
-            'title.ru' => 'required|min:1|max:255',
+            'title.en' => 'required|min:1|max:255',
             'img' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         // dd($request->title);
 
         $industrie = new Industrie();
         $industrie->title = $request->title;
+        $industrie->desc = $request->desc;
         $industrie->industryCategory_id = $request->industryCategory_id;
         if ($request->hasfile('img')) {
             $file = $request->file('img');
@@ -69,13 +73,14 @@ class IndustrieController extends Controller
         return redirect()->route('industries.index')->with('message', "Industry added successfully");
     }
 
-    public function delete_image_industrie(Request $request){
+    public function delete_image_industrie(Request $request)
+    {
         // @dd($request);
-        if(!$files = Industrie::find($request->id)){
+        if (!$files = Industrie::find($request->id)) {
             return redirect()->back()->withErrors('message', 'Image not found');
         }
-        $destination = 'uploads/industrie/'.$files->img;
-        if(File::exists($destination)){
+        $destination = 'uploads/industrie/' . $files->img;
+        if (File::exists($destination)) {
             File::delete($destination);
         }
         $files->update([
@@ -83,12 +88,12 @@ class IndustrieController extends Controller
         ]);
         return response()->json(["message"  =>  "Successfully deleted"], 200);
         // return redirect()->back()->with('message', 'Image Delete Successfully');
-        
+
     }
 
     public function upload_industrie_image(Request $request)
     {
-        
+
         $request->validate([
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
@@ -131,7 +136,13 @@ class IndustrieController extends Controller
         $industrie = Industrie::with('industrieCategory')->findOrFail($id);
         $languages = Lang::all();
         $industriescategories = IndustrieCategory::all();
-        return view('app.industrie.edit', compact('industrie', 'languages','industriescategories'));
+        $lang = \App::getLocale();
+        return view('app.industrie.edit', compact(
+            'industrie',
+            'languages',
+            'industriescategories',
+            'lang'
+        ));
     }
 
     /**
@@ -144,13 +155,14 @@ class IndustrieController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            
-            'title.ru' => 'required|min:1|max:255'
+
+            'title.en' => 'required|min:1|max:255'
         ]);
 
         $industrie = Industrie::find($id);
-      
+
         $industrie->title = $request->title;
+        $industrie->desc = $request->desc;
         $industrie->industryCategory_id = $request->industryCategory_id;
         $industrie->update();
         return redirect()->route('industries.index')->with('message', 'Industry edit successfully');
