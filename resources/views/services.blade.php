@@ -141,6 +141,15 @@
             </div>
         @endif
 
+        <div class="mt-4" style="    margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+        }">
+            {!! $services->links() !!}
+        </div>
+        
     </main>
     <style>
         .services__cards {

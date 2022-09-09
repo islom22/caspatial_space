@@ -94,7 +94,7 @@ Route::get('setlocale/{lang}', function ($lang) {
 
     //разбиваем на массив по разделителю
     $segments = explode('/', $parse_url);
-
+    
     //Если URL (где нажали на переключение языка) содержал корректную метку языка
     if (in_array($segments[1], App\Http\Middleware\LocaleMiddleware::$languages)) {
 

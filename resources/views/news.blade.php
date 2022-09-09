@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="cards__inner">
                         @foreach ($news as $item)
-                            <a href="{{ route('news_inner', ['id' => $item->id]) }}" class="card">
+                            <a href="{{ route('news_inner', ['id' => $item->id]) }}" class="card" style="border: none  !important;">
                                 @if (isset($item->img))
                                     <div class="card__img">
                                         <img src="{{ asset('uploads/news/' . $item->img) }}" alt="">
@@ -44,6 +44,14 @@
                                 @endif
                             </a>
                         @endforeach
+                    </div>
+                    <div class="mt-4" style="    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 40px;
+                    }">
+                        {!! $news->links() !!}
                     </div>
                 </div>
             </div>

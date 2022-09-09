@@ -2,10 +2,10 @@
 @section('title', 'CAST interenational FZCO')
 
 @section('content')
-    <main class="contacts-page">
+    <main class="contacts-page" style="padding-top:60px">
         <!-- <div class="map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.4994806108966!2d69.28949371479528!3d41.341496006802856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef4ac6f104ea9%3A0x556bc75f6a220366!2zQm9kb216b3Iga28nY2hhc2ksINCi0L7RiNC60LXQvdGCLCBVemJla2lzdGFu!5e0!3m2!1sen!2s!4v1634381136430!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div> -->
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.4994806108966!2d69.28949371479528!3d41.341496006802856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef4ac6f104ea9%3A0x556bc75f6a220366!2zQm9kb216b3Iga28nY2hhc2ksINCi0L7RiNC60LXQvdGCLCBVemJla2lzdGFu!5e0!3m2!1sen!2s!4v1634381136430!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div> -->
         <div class="contacts__content">
             <div class="container">
                 <div class="contacts__body">
@@ -97,6 +97,15 @@
                     <div class="contacts__right">
                         <h2 class="contacts__right-title ir-semibold">Connect with us</h2>
                         <p class="contacts__right-subtitle">Leave your contact details and we will contact you.</p>
+                        {{-- @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif --}}
                         <form class="contacts__form" action="{{ route('order') }}" method="get"
                             enctype='multipart/form-data'>
                             @csrf

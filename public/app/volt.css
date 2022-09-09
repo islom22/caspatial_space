@@ -7348,6 +7348,9 @@ textarea.form-control-lg {
   .navbar-dark .navbar-text a:focus {
     color: #ffffff;
 }
+.card__inner a{
+    border: none !important;
+}
 
 .card {
     position: relative;
@@ -7357,7 +7360,8 @@ textarea.form-control-lg {
     word-wrap: break-word;
     background-color: #ffffff;
     background-clip: border-box;
-    border: 0.0625rem solid rgba(17, 24, 39, 0.125);
+    /* border: 0.0625rem solid rgba(17, 24, 39, 0.125); */
+    border: none !important;
     border-radius: 0.5rem;
 }
 

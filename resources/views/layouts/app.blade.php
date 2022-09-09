@@ -236,7 +236,7 @@
                             </svg>
                         </span>
                     </span>
-                    <div class=" collapse show " id="posts">
+                    <div >
                         <div class="multi-level collapse" role="list" id="submenu-add" aria-expanded="false"
                         style="">
                         <ul class="flex-column nav">

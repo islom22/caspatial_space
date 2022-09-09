@@ -9,6 +9,11 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="{{ asset('css/style.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <style>
+        .active {
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,7 +35,7 @@
                         <ul class="header__list">
                             <li>
                                 <a href="{{ route('index') }}"
-                                class="header__link 	@if (request()->is('/') || request()->is(app()->getLocale())) active header__contact @endif">
+                                    class="header__link 	@if (request()->is('/') || request()->is(app()->getLocale())) active header__contact @endif">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     Main
                                     {{-- </p> --}}
@@ -39,7 +44,10 @@
                             <li>
                                 <a href="{{ route('services') }}"
                                     class="header__link
-								@if (request()->is('services') || request()->is('services/*') || request()->is('*/services/*') || request()->is('*/services')) active header__contact @endif
+								@if (request()->is('services') ||
+            request()->is('services/*') ||
+            request()->is('*/services/*') ||
+            request()->is('*/services')) active header__contact @endif
 								">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     Services
@@ -49,7 +57,10 @@
                             <li>
                                 <a href="{{ route('industries') }}"
                                     class="header__link
-								@if (request()->is('industries') || request()->is('industries/*') || request()->is('*/industries/*') || request()->is('*/industries')) active header__contact @endif
+								@if (request()->is('industries') ||
+            request()->is('industries/*') ||
+            request()->is('*/industries/*') ||
+            request()->is('*/industries')) active header__contact @endif
 								">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     Industries
@@ -59,7 +70,7 @@
                             <li>
                                 <a href="{{ route('about') }}"
                                     class="header__link
-								@if (request()->is('about') || request()->is('about/*') || request()->is('*/about/*')|| request()->is('*/about')) active header__contact @endif
+								@if (request()->is('about') || request()->is('about/*') || request()->is('*/about/*') || request()->is('*/about')) active header__contact @endif
 								">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     About
@@ -79,7 +90,10 @@
                             <li>
                                 <a href="{{ route('connect') }}"
                                     class="header__link
-								@if (request()->is('connect') || request()->is('connect/*') || request()->is('*/connect/*') || request()->is('*/connect')) active header__contact @endif
+								@if (request()->is('connect') ||
+            request()->is('connect/*') ||
+            request()->is('*/connect/*') ||
+            request()->is('*/connect')) active header__contact @endif
 								">
                                     {{-- <p class="font-weight-bold" style="font-weight: 600"> --}}
                                     Contacts
@@ -87,57 +101,57 @@
                                 </a>
                             </li>
                             <button class="header__btn  ir-semibold form-trigger">Connect with us</button>
-                            
+
                             <li>
 
                                 <div class="header__lang header__lang--mobile">
-                                    @foreach($langs as $lang)   
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.998 9C16.998 13.4172 13.4172 16.998 9.00001 16.998M16.998 9C16.998 4.58283 13.4172 1.002 9.00001 1.002M16.998 9H1.00201M9.00001 16.998C4.58284 16.998 1.00201 13.4172 1.00201 9M9.00001 16.998C10.7944 16.998 12.249 13.4172 12.249 9C12.249 4.58283 10.7944 1.002 9.00001 1.002M9.00001 16.998C7.20564 16.998 5.75101 13.4172 5.75101 9C5.75101 4.58283 7.20564 1.002 9.00001 1.002M1.00201 9C1.00201 4.58283 4.58284 1.002 9.00001 1.002"
-                                            stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    
+                                    @foreach ($langs as $lang)
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.998 9C16.998 13.4172 13.4172 16.998 9.00001 16.998M16.998 9C16.998 4.58283 13.4172 1.002 9.00001 1.002M16.998 9H1.00201M9.00001 16.998C4.58284 16.998 1.00201 13.4172 1.00201 9M9.00001 16.998C10.7944 16.998 12.249 13.4172 12.249 9C12.249 4.58283 10.7944 1.002 9.00001 1.002M9.00001 16.998C7.20564 16.998 5.75101 13.4172 5.75101 9C5.75101 4.58283 7.20564 1.002 9.00001 1.002M1.00201 9C1.00201 4.58283 4.58284 1.002 9.00001 1.002"
+                                                stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
 
                                         <a href="{{ route('setlocale', ['lang' => $lang->small]) }}"
-                                            class="header__lang-item  @if((App::getLocale() == $lang->small)) active    @endif  "
+                                            class="header__lang-item  @if (App::getLocale() == $lang->small) active @endif  "
                                             onclick="activeFun">{{ $lang->small }}</a>
-                                            {{-- @dd($lang->small) --}}
-                                            {{-- @dump(App::getLocale() == $lang->small) --}}
-                                        @endforeach
+                                        {{-- @dd($lang->small) --}}
+                                        {{-- @dump(App::getLocale() == $lang->small) --}}
+                                    @endforeach
 
-                                        {{-- @dd((\App::getLocale() == $lang)) --}}
+                                    {{-- @dd((\App::getLocale() == $lang)) --}}
                                     {{-- <a href="{{ route('setlocale', ['lang' => 'ru']) }}"
-                                        class="header__lang-item @if (request()->is('/') || request()->is('/*') || request()->is('*/*') )  active @endif"
+                                        class="header__lang-item @if (request()->is('/') || request()->is('/*') || request()->is('*/*'))  active @endif"
                                         onclick="activeFun">Ru</a> --}}
                                 </div>
-        
+
                                 <div class="header__lang ">
-                                    @foreach($langs as $lang)   
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.998 9C16.998 13.4172 13.4172 16.998 9.00001 16.998M16.998 9C16.998 4.58283 13.4172 1.002 9.00001 1.002M16.998 9H1.00201M9.00001 16.998C4.58284 16.998 1.00201 13.4172 1.00201 9M9.00001 16.998C10.7944 16.998 12.249 13.4172 12.249 9C12.249 4.58283 10.7944 1.002 9.00001 1.002M9.00001 16.998C7.20564 16.998 5.75101 13.4172 5.75101 9C5.75101 4.58283 7.20564 1.002 9.00001 1.002M1.00201 9C1.00201 4.58283 4.58284 1.002 9.00001 1.002"
-                                            stroke="white" stroke-width="1.5" stroke-miterlimit="10"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                    
+                                    @foreach ($langs as $lang)
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.998 9C16.998 13.4172 13.4172 16.998 9.00001 16.998M16.998 9C16.998 4.58283 13.4172 1.002 9.00001 1.002M16.998 9H1.00201M9.00001 16.998C4.58284 16.998 1.00201 13.4172 1.00201 9M9.00001 16.998C10.7944 16.998 12.249 13.4172 12.249 9C12.249 4.58283 10.7944 1.002 9.00001 1.002M9.00001 16.998C7.20564 16.998 5.75101 13.4172 5.75101 9C5.75101 4.58283 7.20564 1.002 9.00001 1.002M1.00201 9C1.00201 4.58283 4.58284 1.002 9.00001 1.002"
+                                                stroke="white" stroke-width="1.5" stroke-miterlimit="10"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
 
                                         <a href="{{ route('setlocale', ['lang' => $lang->small]) }}"
-                                            class="header__lang-item  @if((App::getLocale() == $lang->small)) active    @endif  "
+                                            class="header__lang-item  @if (App::getLocale() == $lang->small) active @endif  "
                                             onclick="activeFun">{{ $lang->small }}</a>
-                                            {{-- @dd($lang->small) --}}
-                                            {{-- @dump(App::getLocale() == $lang->small) --}}
-                                        @endforeach
+                                        {{-- @dd($lang->small) --}}
+                                        {{-- @dump(App::getLocale() == $lang->small) --}}
+                                    @endforeach
 
-                                        {{-- @dd((\App::getLocale() == $lang)) --}}
+                                    {{-- @dd((\App::getLocale() == $lang)) --}}
                                     {{-- <a href="{{ route('setlocale', ['lang' => 'ru']) }}"
-                                        class="header__lang-item @if (request()->is('/') || request()->is('/*') || request()->is('*/*') )  active @endif"
+                                        class="header__lang-item @if (request()->is('/') || request()->is('/*') || request()->is('*/*'))  active @endif"
                                         onclick="activeFun">Ru</a> --}}
                                 </div>
-        
+
                             </li>
                         </ul>
 
@@ -362,25 +376,27 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('js/libs.min.js') }}"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
-<style>
-    .active {
-        font-weight: 600;
-    }
-</style>
+
 <style>
     .close {
         top: 171px;
-        right: 578px;   
+        right: 568px;
         position: absolute;
-        border:none;
+        border: none;
         background: none;
         font-size: 30px;
     }

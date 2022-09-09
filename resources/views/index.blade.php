@@ -78,7 +78,7 @@
                     <div class="services__top">
                         <div class="title services__title">
                             <h3 class="ir-bold">Our services</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis, consequuntur.</p>
+                            <p>Creation of detailed photorealistic 3D surface models in the required coordinate system.</p>
                         </div>
                         <a href="{{ route('services') }}" class="ir-semibold services__top-link">All services</a>
                     </div>
@@ -170,7 +170,7 @@
                         <li>{{ translation('third') }}</li>
                         <li>{{ translation('four') }}</li>
                     </ul>
-                    <a href="#" class="development__link">
+                    <a href="{{ route('services') }}" class="development__link">
                         <img src="{{ asset('images/arrow-right.svg') }}" alt="">
                     </a>
                 </div>

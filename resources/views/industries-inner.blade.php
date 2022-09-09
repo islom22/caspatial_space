@@ -26,9 +26,9 @@
         @if (isset($industries[0]))
             <div class="cards">
                 <div class="container">
-                    <div class="cards__inner">
+                    <div class="cards__inner" >
                         @foreach ($industries as $industry)
-                            <a href="{{ route('industries-show', ['id' => $industry->id]) }}" class="card">
+                            <a href="{{ route('industries-show', ['id' => $industry->id]) }}" class="card" style="border: none !important;">
                                 @if (isset($industry->img))
                                     <div class="card__img">
                                         <img src="{{ asset('uploads/industrie/' . $industry->img) }}" alt="">
@@ -48,6 +48,14 @@
                                 @endif
                             </a>
                         @endforeach
+                    </div>
+                    <div class="mt-4" style="    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 40px;2
+                    }">
+                        {!! $industries->links() !!}
                     </div>
                 </div>
             </div>

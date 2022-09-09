@@ -66,7 +66,7 @@ class WebController extends Controller
             ->first();
         $industries = Industrie::with('industrieCategory')
             ->where('industryCategory_id', $industryCategory_id)
-            ->paginate(6);
+            ->paginate(12);
         $industriescategories = IndustrieCategory::where('id', $industryCategory_id)->first();
         $lang = \App::getLocale();
         $langs = Lang::all();
@@ -100,10 +100,10 @@ class WebController extends Controller
     public function news()
     {
         $about = About::first();
-        $news = News::all();
+        $news = News::latest()->paginate(12);
         $lang = \App::getLocale();
         $langs = Lang::all();
-        $translations = Translation::all();
+        $translations = Translation::all(); 
         // $lang = \App::getLocale();
         return view('news', compact(
             'about',
@@ -135,7 +135,7 @@ class WebController extends Controller
     {
         $about = About::first();
         $servicecategories = ServiceCategory::all();
-        $services = Service::with('serviceImage', 'serviceCategory')->paginate(10);
+        $services = Service::with('serviceImage', 'serviceCategory')->paginate(12);
         $lang = \App::getLocale();
         $langs = Lang::all();
         $translations = Translation::all();
@@ -228,6 +228,11 @@ class WebController extends Controller
 
     public function order(Request $request)
     {
+
+        $request->validate([
+            'phone' => 'required',
+            'name' => 'required'
+        ]);
 
         $data = $request->all();
         $data['phone'] = $request->phone;

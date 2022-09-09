@@ -1120,7 +1120,8 @@ a {
   -webkit-transition: color 0.2s ease;
   -o-transition     : color 0.2s ease;
   transition        : color 0.2s ease;
-  color: #0057FF;
+  color: #131314;
+  text-transform: capitalize;
 }
 
 .header__lang-item:hover,
@@ -2415,7 +2416,7 @@ a {
 }
 
 .footer__top {
-  margin-top: 50px !important;
+  /* margin-top: 50px !important; */
   padding      : 40px 0;
   border-bottom: 1px solid #121212
 }
